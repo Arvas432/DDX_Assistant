@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DDXAssistant" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/main_dark_purple</item>
+        <item name="android:navigationBarColor">@color/main_dark_purple</item>
+    </style>
+
+    <style name="Theme.DDXAssistant" parent="Base.Theme.DDXAssistant" />
+</resources>
