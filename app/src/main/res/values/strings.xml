@@ -1,6 +1,21 @@
 <resources>
-    <string name="app_name">DDX Assistant</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">DDX Progress</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="i_want_to_log_in_as">Я хочу войти как</string>
+    <string name="more_than_just_fitness">#Больше, чем фитнес</string>
+    <string name="ddx_progress">DDX progress</string>
+    <string name="welcome_to">Добро\nпожаловать в</string>
+    <string name="start_training">Начать тренировку</string>
+    <string name="authorization">Авторизация</string>
+    <string name="id">id</string>
+    <string name="log_in">Войти</string>
+    <string name="password">Пароль</string>
+    <string name="no_account">Нет учетной записи?</string>
+    <string name="create_it"><u>Создайте ее!</u></string>
+    <string name="registration">Регистрация</string>
+    <string name="email">Почта</string>
+    <string name="address">Адрес филиала</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="log_in_exclamation"><u>Войдите!</u></string>
+    <string name="already_have_an_account">Уже есть аккаунт?</string>
 </resources>

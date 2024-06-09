@@ -12,5 +12,17 @@
         android:fontStyle="normal"
         android:fontWeight="500"
         android:font="@font/raleway_semibold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/raleway_regular" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/raleway_black" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        android:font="@font/raleway_light" />
 
 </font-family>

@@ -32,6 +32,7 @@ class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).hideSystemUI()
         val moveDistancePx = moveDistanceDp * resources.displayMetrics.density
         val moveUp = TranslateAnimation(0f, 0f, 0f, -moveDistancePx).apply {
             duration = animDuration
@@ -62,7 +63,7 @@ class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
         moveDown.setAnimationListener(animationListener)
 
         binding.head.startAnimation(moveUp)
-        handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_roleChoiceFragment)}, 5000L)
+        handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_welcomeFragment) }, 5000L)
     }
 
     override fun onDestroyView() {
