@@ -3,7 +3,7 @@ package com.example.ddxassistant.ui
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ddxassistant.databinding.MessageListItemBinding
-import com.example.ddxassistant.domain.TextMessage
+import com.example.ddxassistant.domain.model.TextMessage
 
 class ChatMessageViewHolder(private val binding: MessageListItemBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(model: TextMessage){

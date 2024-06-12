@@ -1,6 +1,7 @@
-package com.example.ddxassistant.data
+package com.example.ddxassistant.data.network
 
 import android.util.Log
+import com.example.ddxassistant.data.local.TokenSharedPreferencesManager
 import okhttp3.Interceptor
 import okhttp3.Response
 

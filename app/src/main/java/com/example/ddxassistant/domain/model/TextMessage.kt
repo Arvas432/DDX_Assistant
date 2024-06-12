@@ -1,4 +1,4 @@
-package com.example.ddxassistant.domain
+package com.example.ddxassistant.domain.model
 
 data class TextMessage(
     val author: String,

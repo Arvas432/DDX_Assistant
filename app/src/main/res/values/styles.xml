@@ -45,6 +45,30 @@
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/main_light_purple</item>
     </style>
+    <style name="black_semibold_20">
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/main_dark_purple</item>
+    </style>
+    <style name="white_medium_20">
+        <item name="fontFamily">@font/raleway_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/main_white</item>
+    </style>
+    <style name="white_medium_12">
+        <item name="fontFamily">@font/raleway_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/main_white</item>
+    </style>
+    <style name="white_regular_15">
+        <item name="fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/main_white</item>
+    </style>
+    <style name="medium_30">
+        <item name="fontFamily">@font/raleway_medium</item>
+        <item name="android:textSize">30sp</item>
+    </style>
     <style name="rounded_purple_button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -69,4 +93,5 @@
         <item name="maxLines">1</item>
         <item name="singleLine">true</item>
     </style>
+
 </resources>

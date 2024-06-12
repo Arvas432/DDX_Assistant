@@ -1,5 +1,6 @@
-package com.example.ddxassistant.data
+package com.example.ddxassistant.data.network
 
+import com.example.ddxassistant.data.dto.Auth
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

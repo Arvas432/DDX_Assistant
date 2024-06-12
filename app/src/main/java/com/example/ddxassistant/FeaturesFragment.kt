@@ -67,7 +67,7 @@ class FeaturesFragment : BindingFragment<FragmentFeaturesBinding>() {
     }
     private fun setCoachChatText(){
         val text1 = SpannableString("Советуйся ")
-        val text2 = SpannableString("с тренером\nв влюбое время")
+        val text2 = SpannableString("с тренером\nв любое время")
         text1.setSpan(ForegroundColorSpan(resources.getColor(R.color.main_light_purple)), 0, text1.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         text1.setSpan(StyleSpan(Typeface.BOLD), 0, text1.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         text2.setSpan(ForegroundColorSpan(resources.getColor(R.color.main_dark_purple)), 0, text2.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)

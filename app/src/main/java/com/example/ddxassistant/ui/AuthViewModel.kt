@@ -1,9 +1,9 @@
 package com.example.ddxassistant.ui
 
 import androidx.lifecycle.ViewModel
-import com.example.ddxassistant.data.AccountApi
-import com.example.ddxassistant.data.Auth
-import com.example.ddxassistant.data.TokenSharedPreferencesManager
+import com.example.ddxassistant.data.network.AccountApi
+import com.example.ddxassistant.data.dto.Auth
+import com.example.ddxassistant.data.local.TokenSharedPreferencesManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

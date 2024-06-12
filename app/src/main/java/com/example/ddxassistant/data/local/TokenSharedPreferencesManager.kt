@@ -1,4 +1,4 @@
-package com.example.ddxassistant.data
+package com.example.ddxassistant.data.local
 
 import android.content.Context
 import android.util.Log
