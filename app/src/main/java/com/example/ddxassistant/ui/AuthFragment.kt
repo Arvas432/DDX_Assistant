@@ -1,10 +1,8 @@
 package com.example.ddxassistant.ui
 
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,10 +36,9 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
             findNavController().navigate(R.id.action_authFragment_to_registrationFragment)
         }
         binding.eyeButton.setOnClickListener {
-            passwordHidden = !passwordHidden
             when(passwordHidden){
-                true-> hidePassword()
-                false -> showPassword()
+                true ->{showPassword(); passwordHidden = false}
+                false ->{hidePassword(); passwordHidden = true }
             }
 
         }
@@ -52,17 +49,17 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
         binding.noAccountLayout.isVisible = false
     }
     private fun renderClient(){
-        binding.idField.hint = resources.getString(R.string.email)
+        binding.idField.hint = resources.getString(R.string.login)
         binding.noAccountLayout.isVisible = true
     }
     private fun showPassword(){
         binding.eyeButton.setImageResource(R.drawable.eye_open)
-        binding.passwordField.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.passwordField.transformationMethod = HideReturnsTransformationMethod.getInstance()
         binding.passwordField.setSelection(binding.passwordField.text!!.length)
     }
     private fun hidePassword(){
         binding.eyeButton.setImageResource(R.drawable.eye_closed)
-        binding.passwordField.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        binding.passwordField.transformationMethod = PasswordTransformationMethod.getInstance()
         binding.passwordField.setSelection(binding.passwordField.text!!.length)
     }
     companion object{

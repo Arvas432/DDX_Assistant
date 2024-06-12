@@ -13,7 +13,7 @@
     <string name="no_account">Нет учетной записи?</string>
     <string name="create_it"><u>Создайте ее!</u></string>
     <string name="registration">Регистрация</string>
-    <string name="email">Почта</string>
+    <string name="login">Логин</string>
     <string name="address">Адрес филиала</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="log_in_exclamation"><u>Войдите!</u></string>
