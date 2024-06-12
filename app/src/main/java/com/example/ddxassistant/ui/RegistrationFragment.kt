@@ -24,5 +24,6 @@ class RegistrationFragment : BindingFragment<FragmentRegistrationBinding>(){
         binding.alreadyHaveAnAccountLayout.setOnClickListener {
             findNavController().navigateUp()
         }
+        findNavController().navigate(R.id.action_registrationFragment_to_chatFragment)
     }
 }

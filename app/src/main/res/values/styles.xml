@@ -65,6 +65,7 @@
         <item name="android:textAppearance">@style/gray_regular_20</item>
         <item name="android:layout_marginHorizontal">35dp</item>
         <item name="android:background">@drawable/gray_text_field_background</item>
+        <item name="android:textColorHint">@color/text_gray</item>
         <item name="maxLines">1</item>
         <item name="singleLine">true</item>
     </style>
