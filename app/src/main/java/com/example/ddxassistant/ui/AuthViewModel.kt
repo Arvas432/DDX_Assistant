@@ -1,69 +1,56 @@
 package com.example.ddxassistant.ui
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ddxassistant.data.network.AccountApi
-import com.example.ddxassistant.data.dto.Auth
-import com.example.ddxassistant.data.local.TokenSharedPreferencesManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
+
+import com.example.ddxassistant.domain.interfaces.AuthInteractor
+import com.example.ddxassistant.domain.model.ServerRequestType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AuthViewModel(
-    private val tokenSharedPreferencesManager: TokenSharedPreferencesManager,
-    private val recipeFeedApi: AccountApi
-): ViewModel() {
-    var textUsername = MutableStateFlow("")
-    var textPassword = MutableStateFlow("")
-    val token = MutableStateFlow("")
-    val isSuccessful = MutableStateFlow(false)
-
-    init {
-        token.value = tokenSharedPreferencesManager.getToken()
+    private val authInteractor: AuthInteractor
+) : ViewModel() {
+    var textUsername: String = ""
+    var textEmail: String = ""
+    var textPassword: String = ""
+    private var screenStateLivedata = MutableLiveData<AuthScreenStates>(AuthScreenStates.Default)
+    fun getScreenStateLiveData(): LiveData<AuthScreenStates> = screenStateLivedata
+    fun renderState(state: AuthScreenStates) {
+        screenStateLivedata.postValue(state)
+    }
+    fun setUsername(input: String){
+        textUsername = input
+    }
+    fun setEmail(input: String){
+        textEmail = input
+    }
+    fun setPassword(input: String){
+        textPassword = input
     }
 
-    fun signIn(isSuccess: () -> Unit, isError: () -> Unit) {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = recipeFeedApi.signIn(
-                    Auth(
-                        textUsername.value,
-                        textUsername.value,
-                        textPassword.value,
-                    )
-                )
+    fun signIn() {
+        viewModelScope.launch {
+            authInteractor.signIn(textUsername, textEmail, textPassword)
+                .collect { response ->
+                    when (response.second) {
+                        ServerRequestType.SUCCESS -> {
+                            renderState(AuthScreenStates.LoginSuccessful(response.first))
+                        }
 
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        if (it.error == "") {
-                            val receivedToken = it.token.trim()
-                            token.value = receivedToken
-                            tokenSharedPreferencesManager.saveToken(receivedToken)
-                            isSuccessful.value = true
-                            withContext(Dispatchers.Main) {
-                                isSuccess()
-                            }
+                        ServerRequestType.LOADING -> {
+                            renderState(AuthScreenStates.Loading)
                         }
-                        else {
-                            isSuccessful.value = false
-                            withContext(Dispatchers.Main) {
-                                isError()
-                            }
+
+                        ServerRequestType.ERROR -> {
+                            renderState(AuthScreenStates.LoginFailed)
                         }
-                    }
-                } else {
-                    isSuccessful.value = false
-                    withContext(Dispatchers.Main) {
-                        isError()
+
+                        ServerRequestType.EMPTY -> Unit
                     }
                 }
-            } catch (e: Exception) {
-                isSuccessful.value = false
-                withContext(Dispatchers.Main) {
-                    isError()
-                }
-            }
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.ddxassistant.domain.impl
 
-import com.example.ddxassistant.domain.WorkoutInteractor
-import com.example.ddxassistant.domain.WorkoutRepository
+import com.example.ddxassistant.domain.interfaces.WorkoutInteractor
+import com.example.ddxassistant.domain.interfaces.WorkoutRepository
 import com.example.ddxassistant.domain.model.ServerRequestType
 import com.example.ddxassistant.domain.model.Workout
 import kotlinx.coroutines.flow.Flow

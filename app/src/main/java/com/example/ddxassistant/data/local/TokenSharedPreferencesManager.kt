@@ -1,11 +1,12 @@
 package com.example.ddxassistant.data.local
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.core.content.edit
 
-class TokenSharedPreferencesManager(context: Context) {
-    private val sharedPreferences = context.getSharedPreferences("token", Context.MODE_PRIVATE)
+class TokenSharedPreferencesManager(private val sharedPreferences: SharedPreferences) {
+
 
     fun saveToken(token: String) {
         val trimmedToken = token.trim()

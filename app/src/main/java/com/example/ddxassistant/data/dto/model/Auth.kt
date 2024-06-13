@@ -1,4 +1,4 @@
-package com.example.ddxassistant.data.dto
+package com.example.ddxassistant.data.dto.model
 
 data class Auth( val name : String  = "",
                  val email: String = "",

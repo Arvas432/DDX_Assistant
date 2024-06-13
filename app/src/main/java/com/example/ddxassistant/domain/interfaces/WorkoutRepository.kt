@@ -1,4 +1,4 @@
-package com.example.ddxassistant.domain
+package com.example.ddxassistant.domain.interfaces
 
 import com.example.ddxassistant.domain.model.Workout
 import kotlinx.coroutines.flow.Flow

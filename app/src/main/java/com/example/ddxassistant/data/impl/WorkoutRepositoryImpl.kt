@@ -1,9 +1,9 @@
 package com.example.ddxassistant.data.impl
 
-import com.example.ddxassistant.data.dto.WorkoutDateRequest
-import com.example.ddxassistant.data.dto.WorkoutDateResponse
+import com.example.ddxassistant.data.dto.request.WorkoutDateRequest
+import com.example.ddxassistant.data.dto.response.WorkoutDateResponse
 import com.example.ddxassistant.data.network.NetworkClient
-import com.example.ddxassistant.domain.WorkoutRepository
+import com.example.ddxassistant.domain.interfaces.WorkoutRepository
 import com.example.ddxassistant.domain.model.Exercise
 import com.example.ddxassistant.domain.model.Workout
 import kotlinx.coroutines.flow.Flow

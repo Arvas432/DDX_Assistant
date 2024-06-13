@@ -1,4 +1,4 @@
-package com.example.ddxassistant.data.dto
+package com.example.ddxassistant.data.dto.model
 
 import com.google.gson.annotations.SerializedName
 

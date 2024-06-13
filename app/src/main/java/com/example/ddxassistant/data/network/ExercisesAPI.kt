@@ -1,6 +1,6 @@
 package com.example.ddxassistant.data.network
 
-import com.example.ddxassistant.data.dto.WorkoutDateResponse
+import com.example.ddxassistant.data.dto.response.WorkoutDateResponse
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
