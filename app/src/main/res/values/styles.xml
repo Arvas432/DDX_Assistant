@@ -69,6 +69,16 @@
         <item name="fontFamily">@font/raleway_medium</item>
         <item name="android:textSize">30sp</item>
     </style>
+    <style name="black_semibold_16">
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/main_dark_purple</item>
+    </style>
+    <style name="regular_gray_12">
+        <item name="fontFamily">@font/raleway_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
     <style name="rounded_purple_button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

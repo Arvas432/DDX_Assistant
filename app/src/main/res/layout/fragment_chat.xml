@@ -3,30 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.ChatFragment">
-    <RelativeLayout
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/topBar"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/coach_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:src="@drawable/photo_drawable"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/top_gl"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:textAppearance="@style/purple_semibold_17"
-            android:layout_toEndOf="@id/coach_photo"
-            android:text="Типо тренер"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp"/>
-
-    </RelativeLayout>
+        android:id="@+id/top_gl"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp"/>
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/top_gl"
+        android:background="@drawable/back_ic"
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="14dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/chatter_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="Тренер Алексей"
+        app:layout_constraintTop_toTopOf="@id/profile_image"
+        app:layout_constraintStart_toEndOf="@id/profile_image"
+        android:textAppearance="@style/black_semibold_16"
+         />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/chatter_name_tv"
+        tools:text="online"
+        android:textAppearance="@style/regular_gray_12"
+        android:alpha="0.5"
+        app:layout_constraintStart_toStartOf="@id/chatter_name_tv"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@id/back_btn"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/top_gl"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/sample_profile_image"
+        android:layout_marginEnd="23dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_rv"
         android:layout_width="match_parent"
@@ -34,15 +63,17 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/text_message_et"
-        app:layout_constraintTop_toBottomOf="@id/topBar"/>
+        app:layout_constraintTop_toBottomOf="@id/top_gl"/>
     <EditText
         android:id="@+id/text_message_et"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:fontFamily="@font/raleway_medium"
-        android:background="@drawable/white_rounded_rectangle"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/rounded_outline_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="Введите текст"
+        android:hint="@string/message"
         android:paddingHorizontal="10dp"
         android:imeOptions="actionDone"
         />

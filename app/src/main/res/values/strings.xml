@@ -21,4 +21,5 @@
     <string name="training">Тренировка</string>
     <string name="time">Время:</string>
     <string name="ammount_of_exercise">Кол-во упражнений:</string>
+    <string name="message">Message...</string>
 </resources>
