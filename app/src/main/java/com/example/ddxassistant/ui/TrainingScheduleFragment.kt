@@ -5,16 +5,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
+import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentTrainingScheduleBinding
 import com.example.ddxassistant.domain.model.CalendarItemPojo
 import com.example.ddxassistant.domain.model.Workout
+import com.example.ddxassistant.ui.adapters.CalendarAdapter
+import com.example.ddxassistant.ui.adapters.WorkoutAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding>() {
     private var currentWeekList = mutableListOf<CalendarItemPojo>()
-    private lateinit var selectedMonth: String
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -24,41 +30,64 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fillWeekDaysList()
         Log.i("КАЛЕНДАРЬ", currentWeekList.toString())
         val testWorkoutList = mutableListOf<Workout>(Workout("Тренировка 1", "7 лет", emptyList()))
         val workoutAdapter = WorkoutAdapter(testWorkoutList)
+        val dropDownAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.months_array, R.layout.month_spinner_layout).also {
+            arrayAdapter ->  arrayAdapter.setDropDownViewResource(R.layout.month_spinner_layout)
+        }
+        binding.dateTv.adapter = dropDownAdapter
+
         binding.trainingRv.adapter = workoutAdapter
         binding.doneCounterTv.text = "0"
         binding.inProgressCounterTv.text = "0"
         binding.missedCounterTv.text = "0"
-        val monthName = arrayOf(
-            "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
-            "Август", "Сентябрь", "Октябрь", "Ноябрь",
-            "Декабрь"
-        )
-
-        binding.dateTv.text = monthName[Calendar.MONTH]
-        selectedMonth = monthName[Calendar.MONTH]
+        val calendar = Calendar.getInstance()
+        binding.dateTv.setSelection(calendar.get(Calendar.MONTH))
+        fillWeekDaysList(calendar.get(Calendar.MONTH))
         Log.i("Month",Calendar.MONTH.toString())
         val calendarAdapter = CalendarAdapter(currentWeekList, getToday())
         binding.calendarLayout.adapter = calendarAdapter
         if (getToday().toInt()>4){
             binding.calendarLayout.scrollToPosition((getToday().toInt() - 4))
         }
+        binding.dateTv.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                fillWeekDaysList(position)
+                calendarAdapter.notifyDataSetChanged()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+
+        }
+        findNavController().navigate(R.id.action_trainingScheduleFragment_to_exerciseCategoriesFragment)
 
     }
-    private fun fillWeekDaysList(){
+    private fun fillWeekDaysList(month: Int){
+        currentWeekList.clear()
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("dd")
         val daysOfWeek = arrayListOf<String>("ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС")
-        val currentMonth = calendar.get(Calendar.MONTH)
+        calendar.set(Calendar.MONTH, month)
         calendar.set(Calendar.DAY_OF_MONTH, 1)
-        while (calendar.get(Calendar.MONTH) == currentMonth) {
+        while (calendar.get(Calendar.MONTH) == month) {
             val dayOfWeek = daysOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]
             currentWeekList.add(CalendarItemPojo(dayOfWeek, dateFormat.format(calendar.time), false))
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
+    }
+    private fun renderEmptyWorkoutList(){
+        binding.emptyPlaceholderLayout.isVisible = true
+        binding.trainingRv.isVisible = false
+    }
+    private fun renderDefault(){
+        binding.emptyPlaceholderLayout.isVisible = false
+        binding.trainingRv.isVisible = true
     }
     private fun getToday(): String{
         val calendar = Calendar.getInstance()

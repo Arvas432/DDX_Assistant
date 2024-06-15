@@ -1,12 +1,11 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.adapters
 
-import android.icu.text.Transliterator.Position
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ddxassistant.databinding.CalendarListItemBinding
 import com.example.ddxassistant.domain.model.CalendarItemPojo
+import com.example.ddxassistant.ui.viewHolders.CalendarItemViewHolder
 
 class CalendarAdapter(private val days: List<CalendarItemPojo>, private val currentDate: String): RecyclerView.Adapter<CalendarItemViewHolder>() {
     private var selectedPos = RecyclerView.NO_POSITION

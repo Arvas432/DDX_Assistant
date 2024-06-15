@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.viewHolders
 
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView

@@ -1,10 +1,11 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ddxassistant.databinding.MessageListItemBinding
 import com.example.ddxassistant.domain.model.TextMessage
+import com.example.ddxassistant.ui.viewHolders.ChatMessageViewHolder
 
 class ChatAdapter(private val messages:List<TextMessage>): RecyclerView.Adapter<ChatMessageViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMessageViewHolder {

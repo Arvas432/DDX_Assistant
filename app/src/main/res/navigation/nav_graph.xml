@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loadingFragment_to_trainingScheduleFragment"
             app:destination="@id/trainingScheduleFragment" />
+        <action
+            android:id="@+id/action_loadingFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/roleChoiceFragment"
@@ -54,15 +57,64 @@
         android:id="@+id/registrationFragment"
         android:name="com.example.ddxassistant.ui.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.ddxassistant.ui.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trainingScheduleFragment"
         android:name="com.example.ddxassistant.ui.TrainingScheduleFragment"
         android:label="fragment_training_schedule"
-        tools:layout="@layout/fragment_training_schedule" />
+        tools:layout="@layout/fragment_training_schedule" >
+        <action
+            android:id="@+id/action_trainingScheduleFragment_to_workoutConstructorFragment"
+            app:destination="@id/workoutConstructorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseCategoriesFragment"
+        android:name="com.example.ddxassistant.ui.ExerciseCategoriesFragment"
+        android:label="fragment_exercise_categories"
+        tools:layout="@layout/fragment_exercise_categories" >
+        <action
+            android:id="@+id/action_exerciseCategoriesFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.example.ddxassistant.ui.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" />
+    <fragment
+        android:id="@+id/exerciseInfoFragment"
+        android:name="com.example.ddxassistant.ui.ExerciseInfoFragment"
+        android:label="fragment_exercise_info"
+        tools:layout="@layout/fragment_exercise_info" />
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="com.example.ddxassistant.ui.ExerciseListFragment"
+        android:label="fragment_exercise_list"
+        tools:layout="@layout/fragment_exercise_list" >
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exerciseInfoFragment"
+            app:destination="@id/exerciseInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutConstructorFragment"
+        android:name="com.example.ddxassistant.ui.WorkoutConstructorFragment"
+        android:label="fragment_workout_constructor"
+        tools:layout="@layout/fragment_workout_constructor" >
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_exerciseCategoriesFragment"
+            app:destination="@id/exerciseCategoriesFragment" />
+    </fragment>
 </navigation>

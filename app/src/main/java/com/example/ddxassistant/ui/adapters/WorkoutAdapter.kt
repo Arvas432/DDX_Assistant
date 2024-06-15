@@ -1,10 +1,11 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ddxassistant.databinding.WorkoutListItemBinding
 import com.example.ddxassistant.domain.model.Workout
+import com.example.ddxassistant.ui.viewHolders.WorkoutItemViewHolder
 
 class WorkoutAdapter(private val workouts: List<Workout>): RecyclerView.Adapter<WorkoutItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutItemViewHolder {

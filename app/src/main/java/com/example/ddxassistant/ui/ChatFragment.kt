@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.databinding.FragmentChatBinding
 import com.example.ddxassistant.domain.model.TextMessage
+import com.example.ddxassistant.ui.adapters.ChatAdapter
 
 
 class ChatFragment : BindingFragment<FragmentChatBinding>(){

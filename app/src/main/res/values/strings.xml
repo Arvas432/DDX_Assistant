@@ -26,4 +26,33 @@
     <string name="in_progress">В процессе</string>
     <string name="skipped">Пропущено</string>
     <string name="workouts">Тренировки</string>
+    <string-array name="months_array">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+    <string name="add_workout"> Добавь себе <b><font color="#8774FF">тренировочку!</font></b></string>
+    <string name="workout_name">Название тренировки</string>
+    <string name="constructor">Конструктор</string>
+    <string name="Exercises">Упражнения</string>
+    <string name="sets">подходов</string>
+    <string name="timesx">раз X</string>
+    <string name="search">Найти</string>
+    <string name="exercise_review">Обзор упражнения</string>
+    <string name="muscles">Мускулы</string>
+    <string name="type">Тип</string>
+    <string name="difficulty">Сложность</string>
+    <string name="equipment">Снаряжение</string>
+    <string name="chats">Чаты</string>
+    <string name="chat">Чат</string>
+    <string name="schedule">Расписание</string>
 </resources>

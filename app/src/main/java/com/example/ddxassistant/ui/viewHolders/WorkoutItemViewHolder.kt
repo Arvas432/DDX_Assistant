@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.viewHolders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ddxassistant.databinding.WorkoutListItemBinding
