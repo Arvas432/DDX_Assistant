@@ -1,6 +1,5 @@
-package com.example.ddxassistant
+package com.example.ddxassistant.ui
 
-import android.animation.PropertyValuesHolder
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import androidx.navigation.fragment.findNavController
+import com.example.ddxassistant.BindingFragment
+import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentLoadingBinding
 
 class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
@@ -63,7 +63,7 @@ class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
         moveDown.setAnimationListener(animationListener)
 
         binding.head.startAnimation(moveUp)
-        handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_welcomeFragment) }, 5000L)
+        handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_trainingScheduleFragment) }, 5000L)
     }
 
     override fun onDestroyView() {

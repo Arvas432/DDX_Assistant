@@ -1,13 +1,14 @@
-package com.example.ddxassistant
+package com.example.ddxassistant.ui
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.ddxassistant.BindingFragment
+import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : BindingFragment<FragmentWelcomeBinding>(){

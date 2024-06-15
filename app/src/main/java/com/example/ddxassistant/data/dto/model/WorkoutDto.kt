@@ -6,5 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class WorkoutDto(
     @SerializedName("")
     val workoutName: String,
+    val workoutTime: String,
     val exercises: List<ExerciseDto>
 )

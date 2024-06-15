@@ -1,60 +1,71 @@
 package com.example.ddxassistant.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ddxassistant.R
+import com.example.ddxassistant.BindingFragment
+import com.example.ddxassistant.databinding.FragmentTrainingScheduleBinding
+import com.example.ddxassistant.domain.model.CalendarItemPojo
+import com.example.ddxassistant.domain.model.Workout
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding>() {
+    private var currentWeekList = mutableListOf<CalendarItemPojo>()
+    private lateinit var selectedMonth: String
+    override fun createBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentTrainingScheduleBinding {
+        return FragmentTrainingScheduleBinding.inflate(inflater, container, false)
+    }
 
-/**
- * A simple [Fragment] subclass.
- * Use the [TrainingScheduleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class TrainingScheduleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fillWeekDaysList()
+        Log.i("КАЛЕНДАРЬ", currentWeekList.toString())
+        val testWorkoutList = mutableListOf<Workout>(Workout("Тренировка 1", "7 лет", emptyList()))
+        val workoutAdapter = WorkoutAdapter(testWorkoutList)
+        binding.trainingRv.adapter = workoutAdapter
+        binding.doneCounterTv.text = "0"
+        binding.inProgressCounterTv.text = "0"
+        binding.missedCounterTv.text = "0"
+        val monthName = arrayOf(
+            "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль",
+            "Август", "Сентябрь", "Октябрь", "Ноябрь",
+            "Декабрь"
+        )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        binding.dateTv.text = monthName[Calendar.MONTH]
+        selectedMonth = monthName[Calendar.MONTH]
+        Log.i("Month",Calendar.MONTH.toString())
+        val calendarAdapter = CalendarAdapter(currentWeekList, getToday())
+        binding.calendarLayout.adapter = calendarAdapter
+        if (getToday().toInt()>4){
+            binding.calendarLayout.scrollToPosition((getToday().toInt() - 4))
+        }
+
+    }
+    private fun fillWeekDaysList(){
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("dd")
+        val daysOfWeek = arrayListOf<String>("ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС")
+        val currentMonth = calendar.get(Calendar.MONTH)
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+        while (calendar.get(Calendar.MONTH) == currentMonth) {
+            val dayOfWeek = daysOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]
+            currentWeekList.add(CalendarItemPojo(dayOfWeek, dateFormat.format(calendar.time), false))
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
     }
+    private fun getToday(): String{
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("dd")
+        Log.i("TODAY", dateFormat.format(calendar.time))
+        return dateFormat.format(calendar.time)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_training_schedule, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TrainingScheduleFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TrainingScheduleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

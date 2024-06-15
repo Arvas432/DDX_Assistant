@@ -19,6 +19,7 @@ class WorkoutRepositoryImpl(private val networkClient: NetworkClient): WorkoutRe
                     val data = results.map {
                         Workout(
                             workoutName = it.workoutName,
+                            it.workoutTime,
                             exercises = it.exercises.map { Exercise(
                                 it.name ?:"",
                                 it.difficulty ?:"",

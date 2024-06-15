@@ -27,6 +27,7 @@
         android:text="@string/time"
         android:textAppearance="@style/white_regular_15"/>
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/workout_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/time_header"
@@ -43,6 +44,7 @@
         android:text="@string/ammount_of_exercise"
         android:textAppearance="@style/white_regular_15"/>
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exercise_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/exercise_ammount_header"
@@ -58,6 +60,15 @@
         android:layout_marginTop="11dp"
         android:layout_marginEnd="21dp"
         android:src="@drawable/sample_profile_image"/>
+    <CheckBox
+        android:id="@+id/check_done"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="22dp"/>
+
         
 
 </androidx.constraintlayout.widget.ConstraintLayout>

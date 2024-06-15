@@ -1,4 +1,4 @@
-package com.example.ddxassistant
+package com.example.ddxassistant.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -6,13 +6,14 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.helper.widget.Carousel
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import com.example.ddxassistant.BindingFragment
+import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentFeaturesBinding
 
 class FeaturesFragment : BindingFragment<FragmentFeaturesBinding>() {

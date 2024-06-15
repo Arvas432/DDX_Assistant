@@ -22,4 +22,8 @@
     <string name="time">Время:</string>
     <string name="ammount_of_exercise">Кол-во упражнений:</string>
     <string name="message">Message...</string>
+    <string name="done">Сделано</string>
+    <string name="in_progress">В процессе</string>
+    <string name="skipped">Пропущено</string>
+    <string name="workouts">Тренировки</string>
 </resources>
