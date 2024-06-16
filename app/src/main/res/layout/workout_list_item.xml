@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="14dp"
+    android:background="@drawable/rounded_purple_rectangle_15"
+    android:layout_height="150dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="4dp">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/training_name"
+        tools:text="Утренняя тренировка"
+        android:textAppearance="@style/white_medium_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/time_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/training_name"
+        app:layout_constraintStart_toStartOf="@id/training_name"
+        android:text="@string/time"
+        android:textAppearance="@style/white_regular_15"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/workout_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/time_header"
+        app:layout_constraintBottom_toBottomOf="@id/time_header"
+        tools:text="-20 мин"
+        android:textAppearance="@style/white_regular_15"
+        android:layout_marginStart="10dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exercise_ammount_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/time_header"
+        app:layout_constraintStart_toStartOf="@id/training_name"
+        android:text="@string/ammount_of_exercise"
+        android:textAppearance="@style/white_regular_15"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exercise_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/exercise_ammount_header"
+        app:layout_constraintBottom_toBottomOf="@id/exercise_ammount_header"
+        tools:text="10"
+        android:textAppearance="@style/white_regular_15"
+        android:layout_marginStart="10dp"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="21dp"
+        android:src="@drawable/sample_profile_image"/>
+    <CheckBox
+        android:id="@+id/check_done"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="22dp"/>
+
+        
+
+</androidx.constraintlayout.widget.ConstraintLayout>

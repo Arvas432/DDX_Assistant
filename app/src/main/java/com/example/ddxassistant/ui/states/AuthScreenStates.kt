@@ -1,0 +1,10 @@
+package com.example.ddxassistant.ui.states
+
+import com.example.ddxassistant.domain.model.UserData
+
+sealed class AuthScreenStates {
+    object Default: AuthScreenStates()
+    object LoginFailed: AuthScreenStates()
+    object Loading: AuthScreenStates()
+    data class LoginSuccessful(val data: UserData) : AuthScreenStates()
+}

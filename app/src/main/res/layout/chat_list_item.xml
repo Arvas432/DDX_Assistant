@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/sample_profile_image"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="15dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/chatter_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_medium"
+        android:textColor="@color/main_dark_purple"
+        android:textSize="18sp"
+        tools:text="Тренер Алексей"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="15dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/last_message_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Так держать!"
+        android:fontFamily="@font/raleway_medium"
+        android:textSize="15sp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="43dp"/>
+
+</FrameLayout>

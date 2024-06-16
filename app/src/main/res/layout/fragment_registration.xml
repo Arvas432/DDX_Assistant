@@ -1,92 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_white"
-    tools:context=".ui.RegistrationFragment">
+    tools:context=".ui.fragments.RegistrationFragment">
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/registration_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
         android:text="@string/registration"
         android:textAppearance="@style/title_text_appearance"
         android:textSize="35sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="71dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/photo_upload_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/photo_upload_iv"
-        android:background="@drawable/photo_drawable"
-        app:layout_constraintTop_toBottomOf="@id/registration_header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="27dp"
-        />
+        android:background="@drawable/photo_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registration_header" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/email_field"
         style="@style/gray_text_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/login"
         android:layout_marginTop="62dp"
-        app:layout_constraintTop_toBottomOf="@id/photo_upload_iv"/>
+        android:hint="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo_upload_iv" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/password_field"
         style="@style/gray_text_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/password"
         android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@id/email_field"/>
+        android:hint="@string/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_field" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/repeat_password_field"
         style="@style/gray_text_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="27dp"
         android:hint="@string/repeat_password"
-        android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@id/password_field"/>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/address_field"
-        style="@style/gray_text_field"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="@string/address"
-        android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@id/repeat_password_field"/>
-   <androidx.appcompat.widget.AppCompatButton
-       app:layout_constraintTop_toBottomOf="@id/address_field"
-       app:layout_constraintVertical_bias="1.0"
-       android:id="@+id/registration_button"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       style="@style/rounded_purple_button"
-       android:text="@string/registration"
-       app:layout_constraintBottom_toTopOf="@id/already_have_an_account_layout"
-       android:layout_marginTop="62dp"
-       android:layout_marginBottom="36dp"
-       android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_field" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registration_button"
+        style="@style/rounded_purple_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/registration"
+        app:layout_constraintBottom_toTopOf="@id/already_have_an_account_layout"
+        app:layout_constraintVertical_bias="1.0" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/already_have_an_account_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="46dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_gravity="center_horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/already_have_an_account"
-            android:textAppearance="@style/purple_medium_17"/>
+            android:textAppearance="@style/purple_medium_17" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/create_account_tv"
             android:layout_width="wrap_content"
@@ -94,6 +92,6 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/raleway_medium"
             android:text="@string/log_in_exclamation"
-            android:textAppearance="@style/purple_semibold_17"/>
+            android:textAppearance="@style/purple_semibold_17" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

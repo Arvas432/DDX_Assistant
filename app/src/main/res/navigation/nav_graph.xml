@@ -7,16 +7,22 @@
 
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.example.ddxassistant.LoadingFragment"
+        android:name="com.example.ddxassistant.ui.fragments.LoadingFragment"
         android:label="fragment_loading"
         tools:layout="@layout/fragment_loading" >
         <action
+            android:id="@+id/action_loadingFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
+        <action
             android:id="@+id/action_loadingFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loadingFragment_to_roleChoiceFragment"
+            app:destination="@id/roleChoiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/roleChoiceFragment"
-        android:name="com.example.ddxassistant.RoleChoiceFragment"
+        android:name="com.example.ddxassistant.ui.fragments.RoleChoiceFragment"
         android:label="fragment_role_choice"
         tools:layout="@layout/fragment_role_choice" >
         <action
@@ -25,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/featuresFragment"
-        android:name="com.example.ddxassistant.FeaturesFragment"
+        android:name="com.example.ddxassistant.ui.fragments.FeaturesFragment"
         android:label="fragment_features"
         tools:layout="@layout/fragment_features" >
         <action
@@ -34,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.ddxassistant.WelcomeFragment"
+        android:name="com.example.ddxassistant.ui.fragments.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -43,25 +49,84 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.example.ddxassistant.ui.AuthFragment"
+        android:name="com.example.ddxassistant.ui.fragments.AuthFragment"
         android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" >
         <action
             android:id="@+id/action_authFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.ddxassistant.ui.RegistrationFragment"
+        android:name="com.example.ddxassistant.ui.fragments.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            android:id="@+id/action_registrationFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.ddxassistant.ui.ChatFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/trainingScheduleFragment"
+        android:name="com.example.ddxassistant.ui.fragments.TrainingScheduleFragment"
+        android:label="fragment_training_schedule"
+        tools:layout="@layout/fragment_training_schedule" >
+        <action
+            android:id="@+id/action_trainingScheduleFragment_to_workoutConstructorFragment"
+            app:destination="@id/workoutConstructorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseCategoriesFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseCategoriesFragment"
+        android:label="fragment_exercise_categories"
+        tools:layout="@layout/fragment_exercise_categories" >
+        <action
+            android:id="@+id/action_exerciseCategoriesFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseInfoFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseInfoFragment"
+        android:label="fragment_exercise_info"
+        tools:layout="@layout/fragment_exercise_info" />
+    <fragment
+        android:id="@+id/exerciseListFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseListFragment"
+        android:label="fragment_exercise_list"
+        tools:layout="@layout/fragment_exercise_list" >
+        <action
+            android:id="@+id/action_exerciseListFragment_to_exerciseInfoFragment"
+            app:destination="@id/exerciseInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutConstructorFragment"
+        android:name="com.example.ddxassistant.ui.fragments.WorkoutConstructorFragment"
+        android:label="fragment_workout_constructor"
+        tools:layout="@layout/fragment_workout_constructor" >
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_exerciseCategoriesFragment"
+            app:destination="@id/exerciseCategoriesFragment" />
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_exerciseInfoFragment"
+            app:destination="@id/exerciseInfoFragment" />
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
+    </fragment>
 </navigation>
