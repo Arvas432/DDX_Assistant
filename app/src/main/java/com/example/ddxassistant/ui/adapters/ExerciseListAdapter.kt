@@ -21,10 +21,15 @@ class ExerciseListAdapter(private val exercises: List<ExerciseWrapper>, private 
     }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        holder.bind(exercises[position])
+        holder.bind(exercises[position]){
+            changeCheckedStateOfItem(it,position)
+        }
         holder.itemView.setOnClickListener{
             action(position)
         }
+    }
+    fun changeCheckedStateOfItem(checked: Boolean, position: Int){
+        exercises[position].isChecked = checked
     }
 
 }

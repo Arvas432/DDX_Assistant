@@ -53,12 +53,22 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
                 false ->{hidePassword(); passwordHidden = true }
             }
         }
+        val emailFieldTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.setEmail(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) = Unit
+
+        }
+        binding.emailEt.addTextChangedListener(emailFieldTextWatcher)
         val loginFieldTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 viewModel.setUsername(s.toString())
-                viewModel.setEmail(s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) = Unit

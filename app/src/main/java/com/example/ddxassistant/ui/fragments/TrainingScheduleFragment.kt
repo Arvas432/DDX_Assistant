@@ -20,6 +20,7 @@ import com.example.ddxassistant.ui.viewModels.ScheduleViewModel
 import com.example.ddxassistant.ui.adapters.CalendarAdapter
 import com.example.ddxassistant.ui.adapters.WorkoutAdapter
 import com.example.ddxassistant.ui.states.WorkoutScheduleStates
+import com.google.gson.Gson
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -51,8 +52,26 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
         Log.i("КАЛЕНДАРЬ", currentWeekList.toString())
         workoutAdapter = WorkoutAdapter(workoutList){
             findNavController().navigate(R.id.action_trainingScheduleFragment_to_workoutConstructorFragment, bundleOf(
-                WORKOUT_KEY to workoutList[it]))
+                WORKOUT_KEY to Gson().toJson( workoutList[it]),
+                EDITING_INDEX_KEY to it))
         }
+        if (arguments!=null){
+            val indexOfEditing = requireArguments().getInt(EDITING_INDEX_KEY)
+            if(indexOfEditing == -1){
+                val workout = requireArguments().getString(WORKOUT_KEY)
+                if (workout!=null){
+                    val parsedWorkout =Gson().fromJson<Workout>(workout, Workout::class.java)
+                    workoutList.add(parsedWorkout)
+                    workoutAdapter.notifyDataSetChanged()
+                }
+            } else{
+                val workout = requireArguments().getString(WORKOUT_KEY)
+                val parsedWorkout =Gson().fromJson<Workout>(workout, Workout::class.java)
+                workoutList.add(parsedWorkout)
+                workoutAdapter.notifyDataSetChanged()
+            }
+        }
+
 
         val dropDownAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.months_array, R.layout.month_spinner_layout).also {
             arrayAdapter ->  arrayAdapter.setDropDownViewResource(R.layout.month_spinner_layout)
@@ -100,8 +119,8 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit
 
         }
-        val currentDay = calendarAdapter.getSelectedDay()
-        viewModel.searchWorkoutsForDate(currentMonth, currentDay)
+//        val currentDay = calendarAdapter.getSelectedDay()
+//        viewModel.searchWorkoutsForDate(currentMonth, currentDay)
 
 //        findNavController().navigate(R.id.action_trainingScheduleFragment_to_exerciseCategoriesFragment)
 
@@ -147,6 +166,8 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
     companion object{
         const val DATE_KEY ="DATE_KEY"
         const val WORKOUT_KEY = "WORKOUT_KEY"
+        const val EDITING_KEY = "EDITING_KEY"
+        const val EDITING_INDEX_KEY = "EDITING_INDEX_KEY"
     }
 
 }

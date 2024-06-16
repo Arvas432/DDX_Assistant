@@ -1,5 +1,6 @@
 package com.example.ddxassistant.data.impl
 
+import android.util.Log
 import com.example.ddxassistant.data.dto.model.Auth
 import com.example.ddxassistant.data.dto.request.AuthRequestEmailPassword
 import com.example.ddxassistant.data.dto.request.SignUpRequestEmailPassword
@@ -18,6 +19,7 @@ class AuthRepositoryImpl(val networkClient: NetworkClient): AuthRepository {
         val response = networkClient.doRequest(AuthRequestEmailPassword(Auth(name, email, password)))
         when(response.resultCode){
             200 ->{
+                Log.i("RESPONSE", response.toString())
                 with(response as AuthorizationResponse){
                     val data = UserData(response.auth.name, response.auth.email, response.auth.role)
                     emit(Pair(data, true))
@@ -32,6 +34,7 @@ class AuthRepositoryImpl(val networkClient: NetworkClient): AuthRepository {
         val response = networkClient.doRequest(SignUpRequestEmailPassword(Auth(name, email, password)))
         when(response.resultCode){
             200 ->{
+                Log.i("RESPONSE", response.toString())
                 with(response as AuthorizationResponse){
                     val data = UserData(response.auth.name, response.auth.email, response.auth.role)
                     emit(Pair(data, true))

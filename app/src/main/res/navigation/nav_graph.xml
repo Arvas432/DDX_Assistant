@@ -122,5 +122,11 @@
         <action
             android:id="@+id/action_workoutConstructorFragment_to_exerciseCategoriesFragment"
             app:destination="@id/exerciseCategoriesFragment" />
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_exerciseInfoFragment"
+            app:destination="@id/exerciseInfoFragment" />
+        <action
+            android:id="@+id/action_workoutConstructorFragment_to_trainingScheduleFragment"
+            app:destination="@id/trainingScheduleFragment" />
     </fragment>
 </navigation>
