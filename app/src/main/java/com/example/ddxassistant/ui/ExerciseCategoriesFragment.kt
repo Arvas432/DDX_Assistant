@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentExerciseCategoriesBinding
@@ -39,9 +41,17 @@ class ExerciseCategoriesFragment : BindingFragment<FragmentExerciseCategoriesBin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ExerciseCategoryAdapter(categoriesList)
+        val adapter = ExerciseCategoryAdapter(categoriesList){
+            findNavController().navigate(R.id.action_exerciseCategoriesFragment_to_exerciseListFragment, bundleOf(
+                exerciseCategoryKey to categoriesList[it].categoryName))
+        }
         binding.categoriesRv.adapter = adapter
-
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+    companion object{
+        const val exerciseCategoryKey = "exerciseCategoryKey"
     }
 
 }

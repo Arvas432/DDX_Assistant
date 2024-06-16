@@ -7,7 +7,7 @@ import com.example.ddxassistant.databinding.CalendarListItemBinding
 import com.example.ddxassistant.domain.model.CalendarItemPojo
 import com.example.ddxassistant.ui.viewHolders.CalendarItemViewHolder
 
-class CalendarAdapter(private val days: List<CalendarItemPojo>, private val currentDate: String): RecyclerView.Adapter<CalendarItemViewHolder>() {
+class CalendarAdapter(private val days: List<CalendarItemPojo>, private val currentDate: String, private val action:() -> Unit): RecyclerView.Adapter<CalendarItemViewHolder>() {
     private var selectedPos = RecyclerView.NO_POSITION
     init {
         selectedPos = days.indexOf(days.filter { it.date == currentDate}[0])
@@ -28,7 +28,11 @@ class CalendarAdapter(private val days: List<CalendarItemPojo>, private val curr
             notifyItemChanged(selectedPos)
             selectedPos = holder.layoutPosition
             notifyItemChanged(selectedPos)
+            action
         }
+    }
+    fun getSelectedDay(): Int{
+        return selectedPos+1
     }
 
 }

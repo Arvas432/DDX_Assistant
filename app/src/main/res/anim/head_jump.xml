@@ -8,7 +8,7 @@
         android:toYDelta="-15dp"
         android:duration="300" />
 
-    <!-- Wait -->
+    <!-- АНИМАЦИИ -->
     <translate
         android:fromYDelta="-15dp"
         android:toYDelta="-15dp"

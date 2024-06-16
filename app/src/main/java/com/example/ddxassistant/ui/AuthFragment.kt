@@ -8,6 +8,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
@@ -89,10 +90,11 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
 
     }
     private fun renderFailedLogin(){
-
+        Toast.makeText(requireContext(), "Авторизация не удалась", Toast.LENGTH_SHORT).show()
     }
     private fun renderSuccessfulLogin(data: UserData){
-
+        Toast.makeText(requireContext(), "Авторизация прошла успешно", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_authFragment_to_trainingScheduleFragment)
     }
     private fun renderDefault(){
 
@@ -117,6 +119,7 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
     }
     companion object{
         const val ROLE_KEY = "ROLE_KEY"
+        const val USER_DATA_KEY = "USER_DATA_KEY"
     }
 
 }

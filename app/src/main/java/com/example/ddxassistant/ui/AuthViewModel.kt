@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ddxassistant.domain.interfaces.AuthInteractor
 import com.example.ddxassistant.domain.model.ServerRequestType
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
@@ -21,19 +22,45 @@ class AuthViewModel(
     fun renderState(state: AuthScreenStates) {
         screenStateLivedata.postValue(state)
     }
-    fun setUsername(input: String){
+
+    fun setUsername(input: String) {
         textUsername = input
     }
-    fun setEmail(input: String){
+
+    fun setEmail(input: String) {
         textEmail = input
     }
-    fun setPassword(input: String){
+
+    fun setPassword(input: String) {
         textPassword = input
     }
 
     fun signIn() {
         viewModelScope.launch {
             authInteractor.signIn(textUsername, textEmail, textPassword)
+                .collect { response ->
+                    when (response.second) {
+                        ServerRequestType.SUCCESS -> {
+                            renderState(AuthScreenStates.LoginSuccessful(response.first))
+                        }
+
+                        ServerRequestType.LOADING -> {
+                            renderState(AuthScreenStates.Loading)
+                        }
+
+                        ServerRequestType.ERROR -> {
+                            renderState(AuthScreenStates.LoginFailed)
+                        }
+
+                        ServerRequestType.EMPTY -> Unit
+                    }
+                }
+        }
+    }
+
+    fun signUp() {
+        viewModelScope.launch {
+            authInteractor.signUp(textUsername, textEmail, textPassword)
                 .collect { response ->
                     when (response.second) {
                         ServerRequestType.SUCCESS -> {

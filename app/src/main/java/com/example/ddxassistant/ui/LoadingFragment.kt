@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentLoadingBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
 
@@ -21,6 +22,7 @@ class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
     private val waitTime = 500L
 
     private val moveDistanceDp = 15f
+    private val viewModel by viewModel<LoadingViewModel>()
 
     private val handler = Handler(Looper.getMainLooper())
     override fun createBinding(
@@ -63,7 +65,10 @@ class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {
         moveDown.setAnimationListener(animationListener)
 
         binding.head.startAnimation(moveUp)
-        handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_trainingScheduleFragment) }, 5000L)
+        when(viewModel.checkFirstLaunch()){
+            true ->  handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_welcomeFragment) }, 3000L)
+            false -> handler.postDelayed({findNavController().navigate(R.id.action_loadingFragment_to_roleChoiceFragment) }, 3000L)
+        }
     }
 
     override fun onDestroyView() {

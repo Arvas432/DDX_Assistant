@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
@@ -21,6 +23,8 @@ import java.util.Calendar
 
 class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding>() {
     private var currentWeekList = mutableListOf<CalendarItemPojo>()
+    private lateinit var calendarAdapter: CalendarAdapter
+    private var currentMonth: Int = 0
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -37,7 +41,6 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
             arrayAdapter ->  arrayAdapter.setDropDownViewResource(R.layout.month_spinner_layout)
         }
         binding.dateTv.adapter = dropDownAdapter
-
         binding.trainingRv.adapter = workoutAdapter
         binding.doneCounterTv.text = "0"
         binding.inProgressCounterTv.text = "0"
@@ -46,11 +49,21 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
         binding.dateTv.setSelection(calendar.get(Calendar.MONTH))
         fillWeekDaysList(calendar.get(Calendar.MONTH))
         Log.i("Month",Calendar.MONTH.toString())
-        val calendarAdapter = CalendarAdapter(currentWeekList, getToday())
+        calendarAdapter = CalendarAdapter(currentWeekList, getToday()){
+            val currentDay = calendarAdapter.getSelectedDay()
+            //запросНаТренировкиНаДень(currentDay, currentMonth)
+        }
         binding.calendarLayout.adapter = calendarAdapter
         if (getToday().toInt()>4){
             binding.calendarLayout.scrollToPosition((getToday().toInt() - 4))
         }
+        val addWorkoutOnClickListener = OnClickListener {
+            findNavController().navigate(R.id.action_trainingScheduleFragment_to_workoutConstructorFragment,
+                bundleOf(
+                    DATE_KEY to calendarAdapter.getSelectedDay().toString() + currentMonth ))
+        }
+        binding.addTrainingButton.setOnClickListener(addWorkoutOnClickListener)
+        binding.addTrainingButtonSmall.setOnClickListener(addWorkoutOnClickListener)
         binding.dateTv.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -60,12 +73,13 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
             ) {
                 fillWeekDaysList(position)
                 calendarAdapter.notifyDataSetChanged()
+                currentMonth = position
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit
 
         }
-        findNavController().navigate(R.id.action_trainingScheduleFragment_to_exerciseCategoriesFragment)
+//        findNavController().navigate(R.id.action_trainingScheduleFragment_to_exerciseCategoriesFragment)
 
     }
     private fun fillWeekDaysList(month: Int){
@@ -95,6 +109,9 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
         Log.i("TODAY", dateFormat.format(calendar.time))
         return dateFormat.format(calendar.time)
 
+    }
+    companion object{
+        const val DATE_KEY ="DATE_KEY"
     }
 
 }
