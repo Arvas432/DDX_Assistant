@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -11,7 +11,6 @@ import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.databinding.FragmentChatBinding
 import com.example.ddxassistant.domain.model.TextMessage
 import com.example.ddxassistant.ui.adapters.ChatAdapter
-import org.w3c.dom.Text
 
 
 class ChatFragment : BindingFragment<FragmentChatBinding>(){

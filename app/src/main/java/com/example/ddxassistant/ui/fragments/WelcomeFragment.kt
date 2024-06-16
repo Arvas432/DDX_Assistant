@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler

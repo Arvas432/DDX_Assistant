@@ -28,7 +28,7 @@ class CalendarAdapter(private val days: List<CalendarItemPojo>, private val curr
             notifyItemChanged(selectedPos)
             selectedPos = holder.layoutPosition
             notifyItemChanged(selectedPos)
-            action
+            action()
         }
     }
     fun getSelectedDay(): Int{

@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentFeaturesBinding
+import com.example.ddxassistant.ui.MainActivity
 
 class FeaturesFragment : BindingFragment<FragmentFeaturesBinding>() {
     override fun createBinding(

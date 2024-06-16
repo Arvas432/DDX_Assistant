@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -16,29 +16,49 @@ import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentTrainingScheduleBinding
 import com.example.ddxassistant.domain.model.CalendarItemPojo
 import com.example.ddxassistant.domain.model.Workout
+import com.example.ddxassistant.ui.viewModels.ScheduleViewModel
 import com.example.ddxassistant.ui.adapters.CalendarAdapter
 import com.example.ddxassistant.ui.adapters.WorkoutAdapter
+import com.example.ddxassistant.ui.states.WorkoutScheduleStates
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding>() {
     private var currentWeekList = mutableListOf<CalendarItemPojo>()
     private lateinit var calendarAdapter: CalendarAdapter
+    private val viewModel by viewModel<ScheduleViewModel>()
+    private lateinit var workoutAdapter: WorkoutAdapter
     private var currentMonth: Int = 0
+    private var workoutList = mutableListOf<Workout>()
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentTrainingScheduleBinding {
         return FragmentTrainingScheduleBinding.inflate(inflater, container, false)
     }
+    private fun renderState(state: WorkoutScheduleStates){
+        Log.i("state", state.toString())
+        when(state){
+            is WorkoutScheduleStates.Content -> renderContent(state.workouts)
+            WorkoutScheduleStates.Default -> renderDefault()
+            WorkoutScheduleStates.Empty -> renderEmptyWorkoutList()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("КАЛЕНДАРЬ", currentWeekList.toString())
-        val testWorkoutList = mutableListOf<Workout>(Workout("Тренировка 1", "7 лет", emptyList()))
-        val workoutAdapter = WorkoutAdapter(testWorkoutList)
+        workoutAdapter = WorkoutAdapter(workoutList){
+            findNavController().navigate(R.id.action_trainingScheduleFragment_to_workoutConstructorFragment, bundleOf(
+                WORKOUT_KEY to workoutList[it]))
+        }
+
         val dropDownAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.months_array, R.layout.month_spinner_layout).also {
             arrayAdapter ->  arrayAdapter.setDropDownViewResource(R.layout.month_spinner_layout)
+        }
+        viewModel.getScreenStateLiveDate().observe(viewLifecycleOwner){
+            renderState(it)
         }
         binding.dateTv.adapter = dropDownAdapter
         binding.trainingRv.adapter = workoutAdapter
@@ -51,7 +71,8 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
         Log.i("Month",Calendar.MONTH.toString())
         calendarAdapter = CalendarAdapter(currentWeekList, getToday()){
             val currentDay = calendarAdapter.getSelectedDay()
-            //запросНаТренировкиНаДень(currentDay, currentMonth)
+            Log.i("clicked", currentDay.toString())
+            viewModel.searchWorkoutsForDate(currentMonth, currentDay)
         }
         binding.calendarLayout.adapter = calendarAdapter
         if (getToday().toInt()>4){
@@ -62,7 +83,7 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
                 bundleOf(
                     DATE_KEY to calendarAdapter.getSelectedDay().toString() + currentMonth ))
         }
-        binding.addTrainingButton.setOnClickListener(addWorkoutOnClickListener)
+        binding.addExerciseButton.setOnClickListener(addWorkoutOnClickListener)
         binding.addTrainingButtonSmall.setOnClickListener(addWorkoutOnClickListener)
         binding.dateTv.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -79,6 +100,9 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit
 
         }
+        val currentDay = calendarAdapter.getSelectedDay()
+        viewModel.searchWorkoutsForDate(currentMonth, currentDay)
+
 //        findNavController().navigate(R.id.action_trainingScheduleFragment_to_exerciseCategoriesFragment)
 
     }
@@ -98,11 +122,20 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
     private fun renderEmptyWorkoutList(){
         binding.emptyPlaceholderLayout.isVisible = true
         binding.trainingRv.isVisible = false
+        binding.addExerciseButton.isVisible = false
     }
     private fun renderDefault(){
         binding.emptyPlaceholderLayout.isVisible = false
         binding.trainingRv.isVisible = true
+        binding.addExerciseButton.isVisible = true
     }
+    private fun renderContent(content: List<Workout>){
+        workoutList.clear()
+        workoutList.addAll(content)
+        workoutAdapter.notifyDataSetChanged()
+        renderDefault()
+    }
+
     private fun getToday(): String{
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("dd")
@@ -110,8 +143,10 @@ class TrainingScheduleFragment : BindingFragment<FragmentTrainingScheduleBinding
         return dateFormat.format(calendar.time)
 
     }
+
     companion object{
         const val DATE_KEY ="DATE_KEY"
+        const val WORKOUT_KEY = "WORKOUT_KEY"
     }
 
 }

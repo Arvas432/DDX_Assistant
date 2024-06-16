@@ -1,10 +1,7 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.viewModels
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LoadingViewModel(private val sharedPreferences: SharedPreferences): ViewModel() {
     fun checkFirstLaunch(): Boolean{

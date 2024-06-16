@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.ExerciseInfoFragment">
+    tools:context=".ui.fragments.ExerciseInfoFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back_btn"
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        tools:src="@drawable/back"
+        android:src="@drawable/back"
         app:layout_constraintTop_toBottomOf="@id/exercise_name" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,8 +7,7 @@ import androidx.lifecycle.viewModelScope
 
 import com.example.ddxassistant.domain.interfaces.AuthInteractor
 import com.example.ddxassistant.domain.model.ServerRequestType
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
+import com.example.ddxassistant.ui.states.AuthScreenStates
 import kotlinx.coroutines.launch
 
 class AuthViewModel(

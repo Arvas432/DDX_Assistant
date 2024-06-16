@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.ExerciseListFragment">
+    tools:context=".ui.fragments.ExerciseListFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back_btn"

@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.states
 
 import com.example.ddxassistant.domain.model.UserData
 

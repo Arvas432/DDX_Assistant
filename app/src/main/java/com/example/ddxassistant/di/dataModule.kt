@@ -18,7 +18,7 @@ import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 val dataModule = module {
-    val apiBaseUrl = "0.0.0.0"
+    val apiBaseUrl = "http://192.144.14.234:8080/"
     val sharedPreferencesToken = "token"
     single<AccountApi>{
         val authInterceptor = AuthInterceptor(get())

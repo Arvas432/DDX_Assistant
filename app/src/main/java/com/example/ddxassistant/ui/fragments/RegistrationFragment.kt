@@ -1,27 +1,27 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentRegistrationBinding
 import com.example.ddxassistant.domain.model.UserData
+import com.example.ddxassistant.ui.viewModels.AuthViewModel
+import com.example.ddxassistant.ui.states.AuthScreenStates
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RegistrationFragment : BindingFragment<FragmentRegistrationBinding>(){
     private var isCoach: Boolean = false
     private val viewModel by viewModel<AuthViewModel>()
+    private var password = ""
+    private var additionalPassword = ""
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -56,15 +56,27 @@ class RegistrationFragment : BindingFragment<FragmentRegistrationBinding>(){
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 viewModel.setPassword(s.toString())
+                password = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) = Unit
 
         }
+        val additionalFieldTextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                additionalPassword = s.toString()
+            }
+
+            override fun afterTextChanged(s: Editable?) = Unit
+
+        }
+        binding.repeatPasswordField.addTextChangedListener(additionalFieldTextWatcher)
         binding.emailField.addTextChangedListener(loginFieldTextWatcher)
         binding.passwordField.addTextChangedListener(passwordFieldTextWatcher)
         binding.registrationButton.setOnClickListener {
-            if (binding.passwordField.text == binding.repeatPasswordField.text){
+            if (password == additionalPassword){
                 viewModel.signUp()
             } else{
                 Toast.makeText(requireContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show()

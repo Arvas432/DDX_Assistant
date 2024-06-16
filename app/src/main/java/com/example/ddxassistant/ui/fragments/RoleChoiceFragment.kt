@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentRoleChoiceBinding
+import com.example.ddxassistant.ui.MainActivity
 
 class RoleChoiceFragment : BindingFragment<FragmentRoleChoiceBinding>() {
     override fun createBinding(

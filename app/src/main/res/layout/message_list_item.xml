@@ -17,7 +17,7 @@
         android:layout_gravity="end"
         android:layout_margin="8dp"
         android:background="@drawable/my_message"
-        android:minWidth="200dp">
+        android:minWidth="150dp">
 
         <TextView
             android:id="@+id/author"
@@ -26,6 +26,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+
             tools:text="AuthorName"
             android:fontFamily="@font/raleway_semibold"
             android:textStyle="bold"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             tools:text="Message text"
+            android:maxWidth="300dp"
             app:layout_constraintBottom_toTopOf="@id/datetime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/author" />
@@ -64,7 +66,7 @@
         tools:visibility="visible"
         android:layout_margin="8dp"
         android:background="@drawable/coach_message"
-        android:minWidth="200dp">
+        android:minWidth="150dp">
 
         <TextView
             android:id="@+id/author_coach"
@@ -89,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Message text"
+            android:maxWidth="300dp"
             app:layout_constraintBottom_toTopOf="@id/datetime_coach"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/author_coach" />

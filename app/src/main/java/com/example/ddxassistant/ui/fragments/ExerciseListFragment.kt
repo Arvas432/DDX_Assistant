@@ -1,7 +1,6 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentExerciseListBinding
 import com.example.ddxassistant.domain.model.Exercise
+import com.example.ddxassistant.domain.model.ExerciseWrapper
 import com.example.ddxassistant.ui.adapters.ExerciseListAdapter
 import com.google.gson.Gson
 
@@ -25,7 +25,7 @@ class ExerciseListFragment : BindingFragment<FragmentExerciseListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.categoriesRv.adapter = ExerciseListAdapter(sampleExercisesList){
+        binding.categoriesRv.adapter = ExerciseListAdapter(sampleExercisesList.map { ExerciseWrapper(it,0,0,false) }){
             findNavController().navigate(R.id.action_exerciseListFragment_to_exerciseInfoFragment,
                 bundleOf(EXERCISE_KEY to Gson().toJson(sampleExercisesList[it]))
             )

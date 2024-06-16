@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_white"
-    tools:context=".ui.RoleChoiceFragment">
+    tools:context=".ui.fragments.RoleChoiceFragment">
     <TextView
         android:id="@+id/login_title"
         app:layout_constraintTag="top_header"

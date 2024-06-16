@@ -7,7 +7,7 @@ import com.example.ddxassistant.databinding.WorkoutListItemBinding
 import com.example.ddxassistant.domain.model.Workout
 import com.example.ddxassistant.ui.viewHolders.WorkoutItemViewHolder
 
-class WorkoutAdapter(private val workouts: List<Workout>): RecyclerView.Adapter<WorkoutItemViewHolder>() {
+class WorkoutAdapter(private val workouts: List<Workout>, private val action: (Int) -> Unit): RecyclerView.Adapter<WorkoutItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutItemViewHolder {
         val layoutInspector = LayoutInflater.from(parent.context)
         return WorkoutItemViewHolder(WorkoutListItemBinding.inflate(layoutInspector, parent, false))
@@ -19,5 +19,8 @@ class WorkoutAdapter(private val workouts: List<Workout>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: WorkoutItemViewHolder, position: Int) {
         holder.bind(workouts[position])
+        holder.itemView.setOnClickListener{
+            action(position)
+        }
     }
 }

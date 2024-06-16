@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_white"
-    tools:context=".ui.WorkoutConstructorFragment">
+    tools:context=".ui.fragments.WorkoutConstructorFragment">
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back_btn"
         android:layout_width="wrap_content"
@@ -88,5 +88,27 @@
         android:layout_marginTop="17dp"
         android:background="@drawable/rounded_light_purple_rectangle_25"
         android:src="@drawable/plus" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workout_exercise_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_layout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="3"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/exercise_list_item" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/add_exercise_button"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_light_purple_rectangle_25"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

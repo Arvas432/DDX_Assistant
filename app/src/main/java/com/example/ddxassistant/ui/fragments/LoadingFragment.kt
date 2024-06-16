@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentLoadingBinding
+import com.example.ddxassistant.ui.viewModels.LoadingViewModel
+import com.example.ddxassistant.ui.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoadingFragment : BindingFragment<FragmentLoadingBinding>() {

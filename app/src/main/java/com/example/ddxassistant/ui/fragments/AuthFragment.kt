@@ -1,4 +1,4 @@
-package com.example.ddxassistant.ui
+package com.example.ddxassistant.ui.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +15,8 @@ import com.example.ddxassistant.BindingFragment
 import com.example.ddxassistant.R
 import com.example.ddxassistant.databinding.FragmentAuthBinding
 import com.example.ddxassistant.domain.model.UserData
+import com.example.ddxassistant.ui.viewModels.AuthViewModel
+import com.example.ddxassistant.ui.states.AuthScreenStates
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -33,6 +35,7 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
         super.onViewCreated(view, savedInstanceState)
         viewModel.getScreenStateLiveData().observe(viewLifecycleOwner){
             renderState(it)
+
         }
         if(arguments!=null){
             isCoach = requireArguments().getBoolean(ROLE_KEY)
@@ -79,6 +82,7 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
 
     }
     private fun renderState(state: AuthScreenStates){
+
         when(state){
             is AuthScreenStates.Loading -> renderLoading()
             is AuthScreenStates.LoginFailed -> renderFailedLogin()
@@ -90,7 +94,8 @@ class AuthFragment :BindingFragment<FragmentAuthBinding>(){
 
     }
     private fun renderFailedLogin(){
-        Toast.makeText(requireContext(), "Авторизация не удалась", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Авторизация не удалась, но мы вас пустим", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_authFragment_to_trainingScheduleFragment)
     }
     private fun renderSuccessfulLogin(data: UserData){
         Toast.makeText(requireContext(), "Авторизация прошла успешно", Toast.LENGTH_SHORT).show()

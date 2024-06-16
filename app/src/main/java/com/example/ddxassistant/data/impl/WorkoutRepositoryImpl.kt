@@ -1,5 +1,6 @@
 package com.example.ddxassistant.data.impl
 
+import android.util.Log
 import com.example.ddxassistant.data.dto.request.WorkoutDateRequest
 import com.example.ddxassistant.data.dto.response.WorkoutDateResponse
 import com.example.ddxassistant.data.network.NetworkClient
@@ -10,7 +11,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.util.Date
 
-class WorkoutRepositoryImpl(private val networkClient: NetworkClient): WorkoutRepository {
+class WorkoutRepositoryImpl(private val networkClient: NetworkClient
+): WorkoutRepository {
+    override val exerciseConstructorList: MutableList<Exercise> = mutableListOf()
     override fun getWorkoutsForDate(date: Date): Flow<Pair<List<Workout>, Boolean>> = flow{
         val response = networkClient.doRequest(WorkoutDateRequest(date))
         when(response.resultCode){
@@ -36,5 +39,17 @@ class WorkoutRepositoryImpl(private val networkClient: NetworkClient): WorkoutRe
                 emit(Pair(emptyList(), false))
             }
         }
+    }
+
+    override fun pushExerciseListToServer(date: Date) {
+        Log.i("НЕ РЕАЛИЗОВАНО", "отправка на сервер")
+    }
+
+    override fun addExerciseToList(exercise: Exercise) {
+        exerciseConstructorList.add(exercise)
+    }
+
+    override fun getCurrentWorkoutList(): List<Exercise> {
+        return exerciseConstructorList
     }
 }

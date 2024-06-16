@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.example.ddxassistant.ui.LoadingFragment"
+        android:name="com.example.ddxassistant.ui.fragments.LoadingFragment"
         android:label="fragment_loading"
         tools:layout="@layout/fragment_loading" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/roleChoiceFragment"
-        android:name="com.example.ddxassistant.ui.RoleChoiceFragment"
+        android:name="com.example.ddxassistant.ui.fragments.RoleChoiceFragment"
         android:label="fragment_role_choice"
         tools:layout="@layout/fragment_role_choice" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/featuresFragment"
-        android:name="com.example.ddxassistant.ui.FeaturesFragment"
+        android:name="com.example.ddxassistant.ui.fragments.FeaturesFragment"
         android:label="fragment_features"
         tools:layout="@layout/fragment_features" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.ddxassistant.ui.WelcomeFragment"
+        android:name="com.example.ddxassistant.ui.fragments.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.example.ddxassistant.ui.AuthFragment"
+        android:name="com.example.ddxassistant.ui.fragments.AuthFragment"
         android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.ddxassistant.ui.RegistrationFragment"
+        android:name="com.example.ddxassistant.ui.fragments.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -70,12 +70,12 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.ddxassistant.ui.ChatFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/trainingScheduleFragment"
-        android:name="com.example.ddxassistant.ui.TrainingScheduleFragment"
+        android:name="com.example.ddxassistant.ui.fragments.TrainingScheduleFragment"
         android:label="fragment_training_schedule"
         tools:layout="@layout/fragment_training_schedule" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseCategoriesFragment"
-        android:name="com.example.ddxassistant.ui.ExerciseCategoriesFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseCategoriesFragment"
         android:label="fragment_exercise_categories"
         tools:layout="@layout/fragment_exercise_categories" >
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatListFragment"
-        android:name="com.example.ddxassistant.ui.ChatListFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ChatListFragment"
         android:label="fragment_chat_list"
         tools:layout="@layout/fragment_chat_list" >
         <action
@@ -102,12 +102,12 @@
     </fragment>
     <fragment
         android:id="@+id/exerciseInfoFragment"
-        android:name="com.example.ddxassistant.ui.ExerciseInfoFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseInfoFragment"
         android:label="fragment_exercise_info"
         tools:layout="@layout/fragment_exercise_info" />
     <fragment
         android:id="@+id/exerciseListFragment"
-        android:name="com.example.ddxassistant.ui.ExerciseListFragment"
+        android:name="com.example.ddxassistant.ui.fragments.ExerciseListFragment"
         android:label="fragment_exercise_list"
         tools:layout="@layout/fragment_exercise_list" >
         <action
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/workoutConstructorFragment"
-        android:name="com.example.ddxassistant.ui.WorkoutConstructorFragment"
+        android:name="com.example.ddxassistant.ui.fragments.WorkoutConstructorFragment"
         android:label="fragment_workout_constructor"
         tools:layout="@layout/fragment_workout_constructor" >
         <action
